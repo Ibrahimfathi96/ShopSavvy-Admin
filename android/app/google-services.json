@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "516437365566",
+    "project_id": "shopsavvy-b9b62",
+    "storage_bucket": "shopsavvy-b9b62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516437365566:android:3cb5fcd61f7318e07f126f",
+        "android_client_info": {
+          "package_name": "com.IBMF.shop_savvy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516437365566-an459o14bs1s9kmvoiioa1c2cotfa885.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.IBMF.shop_savvy",
+            "certificate_hash": "00283d31fe2df1653b08924c02a30b46e3b2a60f"
+          }
+        },
+        {
+          "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEzwzDrrhBI08Kts5y7m90gNZuRwPdNr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516437365566-5dd0g4fso49rb94nafdh1c8gudbifk5c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.IBMF.ecommerceApplication"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516437365566:android:52668f19f994636a7f126f",
+        "android_client_info": {
+          "package_name": "com.IBMF.shop_savvy_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEzwzDrrhBI08Kts5y7m90gNZuRwPdNr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516437365566-5dd0g4fso49rb94nafdh1c8gudbifk5c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.IBMF.ecommerceApplication"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516437365566:android:47e47f9fa0bba9887f126f",
+        "android_client_info": {
+          "package_name": "com.IBMF.shop_savvy_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEzwzDrrhBI08Kts5y7m90gNZuRwPdNr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516437365566-4pp50bfuuam9k5pb0jhs8742vorgb336.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516437365566-5dd0g4fso49rb94nafdh1c8gudbifk5c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.IBMF.ecommerceApplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
