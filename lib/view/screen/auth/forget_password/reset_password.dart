@@ -5,7 +5,7 @@ import 'package:shop_savvy_admin/core/class/handling_data_view.dart';
 import 'package:shop_savvy_admin/core/functions/valid_input.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/auth_body_text.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/auth_title_text.dart';
-import 'package:shop_savvy_admin/view/widget/auth_widgets/custom_text_form_field.dart';
+import 'package:shop_savvy_admin/view/widget/auth_widgets/custom_auth_text_form_field.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/cutom_auth_button.dart';
 
 class ResetPassword extends StatelessWidget {

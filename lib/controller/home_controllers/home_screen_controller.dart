@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_savvy_admin/view/widget/home_widgets/home_body.dart';
 import 'package:shop_savvy_admin/view/screen/orders_view/myorders_view.dart';
 
 abstract class HomeScreenController extends GetxController {
@@ -10,16 +11,13 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currentIndex = 0;
 
   List<Widget> pagesList = [
+    HomeBody(),
     MyOrdersView(),
-    Container(
-      color: Colors.red,
-      child: Text("Settings"),
-    ),
   ];
 
   List bottomAppbar = [
+    {"title": "Home", "icon": Icons.home},
     {"title": "Orders", "icon": Icons.shopping_cart},
-    {"title": "Settings", "icon": Icons.settings}
   ];
 
   @override

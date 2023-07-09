@@ -20,6 +20,7 @@ class AppLink {
   static const String resetPassword =
       "$server/forget_password/reset_password.php";
   static const String fpVerifyCode = "$server/forget_password/verify_code.php";
+
   //Orders & Checkout PHP
   static const String orders = "$server/orders";
   static const String approvedOrders = "$orders/approve.php";
@@ -29,8 +30,21 @@ class AppLink {
   static const String detailsOrders = "$orders/details.php";
   static const String doneOrders = "$orders/done.php";
 
+  //Categories
+  static const String categories = "$server/categories";
+  static const String addCategories = "$categories/add.php";
+  static const String editCategories = "$categories/edit.php";
+  static const String viewCategories = "$categories/view.php";
+  static const String deleteCategories = "$categories/delete.php";
+  //Items
+  static const String items = "$server/items";
+  static const String addItems = "$items/add.php";
+  static const String editItems = "$items/edit.php";
+  static const String viewItems = "$items/view.php";
+  static const String deleteItems = "$items/delete.php";
+
   //Image Links
-  static const String imagesLink = "$server/uploads";
+  static const String imagesLink = "http://192.168.1.6/shop_savvy/uploads";
   static const String imagesCategories = "$imagesLink/categories";
   static const String imagesItems = "$imagesLink/items";
 }

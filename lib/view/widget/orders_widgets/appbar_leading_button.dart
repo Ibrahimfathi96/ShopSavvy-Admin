@@ -13,7 +13,7 @@ class AppBarItem extends StatelessWidget {
     return IconButton(
       padding: EdgeInsets.zero,
       onPressed: () {
-        Get.offAllNamed(HomeScreen.routeName);
+        // Get.offAllNamed(HomeScreen.routeName);
       },
       icon: Icon(
         Icons.home_outlined,

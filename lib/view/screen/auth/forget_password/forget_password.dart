@@ -4,7 +4,7 @@ import 'package:shop_savvy_admin/controller/forget_password_controllers/forget_p
 import 'package:shop_savvy_admin/core/class/handling_data_view.dart';
 import 'package:shop_savvy_admin/core/functions/valid_input.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/auth_nav_button.dart';
-import 'package:shop_savvy_admin/view/widget/auth_widgets/custom_text_form_field.dart';
+import 'package:shop_savvy_admin/view/widget/auth_widgets/custom_auth_text_form_field.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/cutom_auth_button.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/forget_password_icon.dart';
 import 'package:shop_savvy_admin/view/widget/auth_widgets/forget_password_texts.dart';
