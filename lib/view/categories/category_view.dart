@@ -27,14 +27,18 @@ class CategoriesView extends StatelessWidget {
               child: GetBuilder<ViewCategoriesController>(
                 builder: (controller) => HandlingDataView(
                   statusRequest: controller.statusRequest,
-                  widget: Container(
-                    child: ListView.builder(
-                      itemCount: controller.data.length,
-                      itemBuilder: (context, index) => CustomCategoryCard(
-                        onTap: () {},
-                        text: controller.data[index].categoriesName!,
-                        imageUrl:
-                            "${AppLink.imagesCategories}/${controller.data[index].categoriesImage}",
+                  widget: WillPopScope(
+                    onWillPop: () => controller.myBack(),
+                    child: Container(
+                      child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: controller.data.length,
+                        itemBuilder: (context, index) => CustomCategoryCard(
+                          onTap: () {},
+                          text: controller.data[index].categoriesName!,
+                          imageUrl:
+                              "${AppLink.imagesCategories}/${controller.data[index].categoriesImage}",
+                        ),
                       ),
                     ),
                   ),
