@@ -6,7 +6,7 @@ class DeleteCategoryData {
 
   DeleteCategoryData(this.crud);
 
-  postData(num categoryId,String imageName,) async {
+  postData(String categoryId,String imageName,) async {
     var response = await crud.postData(AppLink.deleteCategories, {
       "categoryId":categoryId,
       "imageName":imageName,
