@@ -11,43 +11,61 @@ class AddNewCategoryCustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(AddCategoryView.routeName);
-      },
-      child: Card(
-        margin: EdgeInsets.all(4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        elevation: 4,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            children: [
-              Image.asset(
-                Assets.imagesCategory,
-                width: 60,
-                height: 60,
+    return Card(
+      margin: EdgeInsets.all(4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          children: [
+            Image.asset(
+              Assets.imagesCategory,
+              width: 60,
+              height: 60,
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            Text(
+              "New Category",
+              style: TextStyle(
+                fontSize: 18,
+                color: AppColors.primaryDark,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                width: 50,
-              ),
-              Text(
-                "Add Category",
-                style: TextStyle(
-                  fontSize: 18,
+            ),
+            Spacer(),
+            InkWell(
+              onTap: () {
+                Get.toNamed(AddCategoryView.routeName);
+              },
+              child: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
                   color: AppColors.primaryDark,
-                  fontWeight: FontWeight.bold,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "Add",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
               ),
-              Spacer(),
-              Icon(
-                Icons.arrow_right,
-                size: 36,
-              ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

@@ -38,7 +38,8 @@ class CustomCategoryCard extends GetView<ViewCategoriesController> {
               SlidableAction(
                 borderRadius: BorderRadius.circular(20),
                 onPressed: (context) {
-                  controller.deleteCategory(categoriesMD.categoriesId.toString(),
+                  controller.deleteCategory(
+                      categoriesMD.categoriesId.toString(),
                       categoriesMD.categoriesImage!);
                 },
                 backgroundColor: const Color(0xFFFE4A49),
@@ -48,45 +49,62 @@ class CustomCategoryCard extends GetView<ViewCategoriesController> {
               ),
             ],
           ),
-          child: InkWell(
-            onTap: onTap,
-            child: Container(
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 6,
+          child: Container(
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 6,
+                ),
+                Container(
+                  height: 70,
+                  width: 70,
+                  child: SvgPicture.network(
+                    "${AppLink.imagesCategories}/${categoriesMD.categoriesImage}",
                   ),
-                  Container(
-                    height: 70,
-                    width: 70,
-                    child: SvgPicture.network(
-                      "${AppLink.imagesCategories}/${categoriesMD.categoriesImage}",
-                    ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Text(
+                  categoriesMD.categoriesName!,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: AppColors.primaryDark,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  Text(
-                    categoriesMD.categoriesName!,
-                    style: TextStyle(
-                      fontSize: 18,
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: onTap,
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    margin: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
                       color: AppColors.primaryDark,
-                      fontWeight: FontWeight.bold,
+                      borderRadius: BorderRadius.circular(16)
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 8,),
+                        Text(
+                          "Edit",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.arrow_right,
+                          color: Colors.white,
+                        ),
+                      ],
                     ),
                   ),
-                  Spacer(),
-                  Icon(
-                    Icons.arrow_right,
-                    size: 36,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
