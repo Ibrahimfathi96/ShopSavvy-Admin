@@ -8,7 +8,7 @@ import 'package:shop_savvy_admin/core/functions/handling_data.dart';
 import 'package:shop_savvy_admin/core/functions/upload_file.dart';
 import 'package:shop_savvy_admin/data/data_source/remote/categories_data/edit.dart';
 import 'package:shop_savvy_admin/data/model/categories_model.dart';
-import 'package:shop_savvy_admin/view/categories/category_view.dart';
+import 'package:shop_savvy_admin/view/screen/categories/category_view.dart';
 
 class EditCategoryController extends GetxController {
   EditCategoryData editCategoryData = EditCategoryData(Get.find());

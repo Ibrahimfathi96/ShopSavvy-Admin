@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
-import 'package:shop_savvy_admin/generated/assets.dart';
-import 'package:shop_savvy_admin/view/categories/add_category_view.dart';
 
 class AddNewCategoryCustomCard extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final void Function() onTap;
+
   const AddNewCategoryCustomCard({
     super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.onTap,
   });
 
   @override
@@ -22,7 +26,7 @@ class AddNewCategoryCustomCard extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              Assets.imagesCategory,
+              imageUrl,
               width: 60,
               height: 60,
             ),
@@ -30,7 +34,7 @@ class AddNewCategoryCustomCard extends StatelessWidget {
               width: 30,
             ),
             Text(
-              "New Category",
+              title,
               style: TextStyle(
                 fontSize: 18,
                 color: AppColors.primaryDark,
@@ -39,14 +43,12 @@ class AddNewCategoryCustomCard extends StatelessWidget {
             ),
             Spacer(),
             InkWell(
-              onTap: () {
-                Get.toNamed(AddCategoryView.routeName);
-              },
+              onTap: onTap,
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: AppColors.primaryDark,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [

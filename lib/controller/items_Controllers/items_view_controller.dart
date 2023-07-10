@@ -3,17 +3,17 @@ import 'package:get/get.dart';
 import 'package:shop_savvy_admin/core/class/status_request.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
 import 'package:shop_savvy_admin/core/functions/handling_data.dart';
-import 'package:shop_savvy_admin/data/data_source/remote/categories_data/delete.dart';
-import 'package:shop_savvy_admin/data/data_source/remote/categories_data/view.dart';
-import 'package:shop_savvy_admin/data/model/categories_model.dart';
-import 'package:shop_savvy_admin/view/screen/categories/edit_category_view.dart';
+import 'package:shop_savvy_admin/data/data_source/remote/items_data/delete.dart';
+import 'package:shop_savvy_admin/data/data_source/remote/items_data/view.dart';
+import 'package:shop_savvy_admin/data/model/items_model.dart';
 import 'package:shop_savvy_admin/view/screen/home/home_screen.dart';
+import 'package:shop_savvy_admin/view/screen/items/edit_item.dart';
 
-class ViewCategoriesController extends GetxController {
-  ViewCategoryData viewCategoryData = ViewCategoryData(Get.find());
-  DeleteCategoryData deleteCategoryData = DeleteCategoryData(Get.find());
+class ViewItemsController extends GetxController {
+  ViewItemData viewItemData = ViewItemData(Get.find());
+  DeleteItemData deleteItemData = DeleteItemData(Get.find());
 
-  List<CategoriesMD> data = [];
+  List<ItemsMd> data = [];
 
   StatusRequest statusRequest = StatusRequest.none;
 
@@ -21,14 +21,14 @@ class ViewCategoriesController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await viewCategoryData.postData();
+    var response = await viewItemData.postData();
     print(
-        "=============================== ViewCategoriesController $response ");
+        "=============================== ViewItemController $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         List dataList = response['data'];
-        data.addAll(dataList.map((e) => CategoriesMD.fromJson(e)));
+        data.addAll(dataList.map((e) => ItemsMd.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -36,7 +36,7 @@ class ViewCategoriesController extends GetxController {
     update();
   }
 
-  deleteCategory(String categoryId, String imageName) {
+  deleteCategory(String itemsId, String imageName) {
     Get.defaultDialog(
       title: "Warning",
       titleStyle: TextStyle(
@@ -45,16 +45,16 @@ class ViewCategoriesController extends GetxController {
         color: AppColors.secondaryColor,
       ),
       middleText:
-      "Are you sure, you want to delete this category?",
+      "Are you sure, you want to delete this product?",
       middleTextStyle: TextStyle(
         fontSize: 16,
         color: AppColors.primaryDark,
       ),
       onCancel: () {},
       onConfirm: () {
-        deleteCategoryData.postData(categoryId, imageName);
+        deleteItemData.postData(itemsId, imageName);
         data.removeWhere((element) =>
-        element.categoriesId.toString() == categoryId);
+        element.itemsId.toString() == itemsId);
         update();
         Get.back();
       },
@@ -64,13 +64,13 @@ class ViewCategoriesController extends GetxController {
     );
   }
 
-  goToEditPage(CategoriesMD categoriesMD) {
-    Get.toNamed(EditCategoryView.routeName, arguments: {
-      "categoriesMD": categoriesMD,
+  goToEditPage(ItemsMd itemsMd) {
+    Get.toNamed(EditItems.routeName, arguments: {
+      "itemsMd": itemsMd,
     });
   }
 
-  myBack() {
+  myBack()  {
     Get.offAllNamed(HomeScreen.routeName);
     return Future.value(false);
   }

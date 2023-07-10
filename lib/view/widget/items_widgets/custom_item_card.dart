@@ -1,19 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:shop_savvy_admin/controller/categories_controller/categories_view_controller.dart';
+import 'package:shop_savvy_admin/controller/items_Controllers/items_view_controller.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
-import 'package:shop_savvy_admin/data/model/categories_model.dart';
+import 'package:shop_savvy_admin/data/model/items_model.dart';
 import 'package:shop_savvy_admin/link_api.dart';
 
-class CustomCategoryCard extends GetView<ViewCategoriesController> {
+class CustomItemCard extends GetView<ViewItemsController> {
   final void Function() onTap;
-  final CategoriesMD categoriesMD;
+  final ItemsMd itemsMd;
 
-  const CustomCategoryCard({
+  const CustomItemCard({
     super.key,
-    required this.categoriesMD,
+    required this.itemsMd,
     required this.onTap,
   });
 
@@ -39,8 +39,7 @@ class CustomCategoryCard extends GetView<ViewCategoriesController> {
                 borderRadius: BorderRadius.circular(20),
                 onPressed: (context) {
                   controller.deleteCategory(
-                      categoriesMD.categoriesId.toString(),
-                      categoriesMD.categoriesImage!);
+                      itemsMd.itemsId.toString(), itemsMd.itemsImage!);
                 },
                 backgroundColor: const Color(0xFFFE4A49),
                 foregroundColor: Colors.white,
@@ -59,30 +58,34 @@ class CustomCategoryCard extends GetView<ViewCategoriesController> {
             child: Row(
               children: [
                 const SizedBox(
-                  width: 6,
+                  width: 10,
                 ),
                 Container(
-                  height: 70,
-                  width: 70,
-                  child: SvgPicture.network(
-                    "${AppLink.imagesCategories}/${categoriesMD.categoriesImage}",
+                  height: 80,
+                  width: 80,
+                  child: CachedNetworkImage(
+                    imageUrl: "${AppLink.imagesItems}/${itemsMd.itemsImage}",
                   ),
                 ),
                 const SizedBox(
-                  width: 50,
+                  width: 10,
                 ),
-                Text(
-                  categoriesMD.categoriesName!,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: AppColors.primaryDark,
-                    fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: 150,
+                  child: Text(
+                    itemsMd.itemsName!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.primaryDark,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    controller.goToEditPage(categoriesMD);
+                    controller.goToEditPage(itemsMd);
                   },
                   child: Container(
                     padding: EdgeInsets.all(8),

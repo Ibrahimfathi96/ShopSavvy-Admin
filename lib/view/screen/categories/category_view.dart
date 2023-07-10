@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_admin/controller/categories_controller/categories_view_controller.dart';
 import 'package:shop_savvy_admin/core/class/handling_data_view.dart';
+import 'package:shop_savvy_admin/generated/assets.dart';
+import 'package:shop_savvy_admin/view/screen/categories/add_category_view.dart';
 import 'package:shop_savvy_admin/view/widget/categories/add_new_category_card_widget.dart';
 import 'package:shop_savvy_admin/view/widget/categories/custom_category_card.dart';
 
@@ -21,7 +23,13 @@ class CategoriesView extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            AddNewCategoryCustomCard(),
+            AddNewCategoryCustomCard(
+              imageUrl: Assets.imagesCategory,
+              title: "New Category",
+              onTap: () {
+                Get.toNamed(AddCategoryView.routeName);
+              },
+            ),
             Expanded(
               child: GetBuilder<ViewCategoriesController>(
                 builder: (controller) => HandlingDataView(

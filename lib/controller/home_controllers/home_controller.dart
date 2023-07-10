@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_admin/generated/assets.dart';
-import 'package:shop_savvy_admin/view/categories/category_view.dart';
+import 'package:shop_savvy_admin/view/screen/categories/category_view.dart';
+import 'package:shop_savvy_admin/view/screen/items/item_view.dart';
 import 'package:shop_savvy_admin/view/widget/home_widgets/gridview_item.dart';
 
 class HomePageController extends GetxController {
@@ -19,8 +20,10 @@ class HomePageController extends GetxController {
       imageUrl: Assets.imagesCategory,
     ),
     GridViewItem(
-      onTap: () {},
-      titleText: "Items",
+      onTap: () {
+        Get.toNamed(ItemsView.routeName);
+      },
+      titleText: "Products",
       imageUrl: Assets.imagesItems,
     ),
     GridViewItem(
