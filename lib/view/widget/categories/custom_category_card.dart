@@ -81,17 +81,20 @@ class CustomCategoryCard extends GetView<ViewCategoriesController> {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: onTap,
+                  onTap: () {
+                    controller.goToEditPage(categoriesMD);
+                  },
                   child: Container(
                     padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryDark,
-                      borderRadius: BorderRadius.circular(16)
-                    ),
+                        color: AppColors.primaryDark,
+                        borderRadius: BorderRadius.circular(16)),
                     child: Row(
                       children: [
-                        const SizedBox(width: 8,),
+                        const SizedBox(
+                          width: 8,
+                        ),
                         Text(
                           "Edit",
                           style: TextStyle(color: Colors.white),

@@ -6,37 +6,38 @@ import 'package:shop_savvy_admin/controller/categories_controller/categories_vie
 import 'package:shop_savvy_admin/core/class/status_request.dart';
 import 'package:shop_savvy_admin/core/functions/handling_data.dart';
 import 'package:shop_savvy_admin/core/functions/upload_file.dart';
-import 'package:shop_savvy_admin/data/data_source/remote/categories_data/add.dart';
+import 'package:shop_savvy_admin/data/data_source/remote/categories_data/edit.dart';
+import 'package:shop_savvy_admin/data/model/categories_model.dart';
 import 'package:shop_savvy_admin/view/categories/category_view.dart';
 
-class AddCategoryController extends GetxController {
-  AddCategoryData addCategoryData = AddCategoryData(Get.find());
+class EditCategoryController extends GetxController {
+  EditCategoryData editCategoryData = EditCategoryData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
   late TextEditingController nameController;
   late TextEditingController arabicNameController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   File? file;
+  late CategoriesMD categoriesMD;
 
   chooseImage() async {
     file = await uploadImageFromGallery(true);
     update();
   }
 
-  AddData() async {
+  editData() async {
     if (formKey.currentState!.validate()) {
-      if (file == null) {
-        return Get.snackbar("Alert", "Please Choose Category Image");
-      }
       statusRequest = StatusRequest.loading;
       update();
 
-      var response = await addCategoryData.postData(
+      var response = await editCategoryData.editData(
+        categoriesMD.categoriesId.toString(),
         nameController.text,
         arabicNameController.text,
-        file!,
+        categoriesMD.categoriesImage!,
+        file,
       );
       print(
-          "=============================== AddCategoriesController $response ");
+          "=============================== EditCategoriesController $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
@@ -53,8 +54,11 @@ class AddCategoryController extends GetxController {
 
   @override
   void onInit() {
+    categoriesMD = Get.arguments['categoriesMD'];
     nameController = TextEditingController();
     arabicNameController = TextEditingController();
+    nameController.text = categoriesMD.categoriesName!;
+    arabicNameController.text = categoriesMD.categoriesNameAr!;
     super.onInit();
   }
 }

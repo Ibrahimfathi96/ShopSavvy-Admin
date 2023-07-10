@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:shop_savvy_admin/core/middleware/middleware.dart';
 import 'package:shop_savvy_admin/view/categories/add_category_view.dart';
 import 'package:shop_savvy_admin/view/categories/category_view.dart';
+import 'package:shop_savvy_admin/view/categories/edit_category_view.dart';
 import 'package:shop_savvy_admin/view/screen/auth/forget_password/forget_password.dart';
 import 'package:shop_savvy_admin/view/screen/auth/forget_password/reset_password.dart';
 import 'package:shop_savvy_admin/view/screen/auth/forget_password/reset_password_success.dart';
@@ -34,6 +35,7 @@ List<GetPage<dynamic>> routes = [
   //Categories
   GetPage(name: CategoriesView.routeName, page: () => const CategoriesView()),
   GetPage(name: AddCategoryView.routeName, page: () => const AddCategoryView()),
+  GetPage(name: EditCategoryView.routeName, page: () => const EditCategoryView()),
   // GetPage(name: EditCategoriesView.routeName, page: () => const CategoriesView()),
   //Items
   GetPage(name: ItemsView.routeName, page: () => const ItemsView()),

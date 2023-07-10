@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:shop_savvy_admin/controller/categories_controller/add_category_controller.dart';
+import 'package:shop_savvy_admin/controller/categories_controller/edit_category_controller.dart';
 import 'package:shop_savvy_admin/core/class/handling_data_view.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
 import 'package:shop_savvy_admin/core/functions/valid_input.dart';
 import 'package:shop_savvy_admin/core/shared/custom_text_form_field.dart';
+import 'package:shop_savvy_admin/link_api.dart';
 import 'package:shop_savvy_admin/view/widget/categories/custom_button.dart';
 
-class AddCategoryView extends StatelessWidget {
-  static const String routeName = '/add-Category-view';
+class EditCategoryView extends StatelessWidget {
+  static const String routeName = '/edit-Category-view';
 
-  const AddCategoryView({super.key});
+  const EditCategoryView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AddCategoryController());
+    Get.put(EditCategoryController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Category'),
+        title: Text('Edit Category'),
       ),
-      body: GetBuilder<AddCategoryController>(
+      body: GetBuilder<EditCategoryController>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusRequest,
           widget: Container(
@@ -32,7 +33,7 @@ class AddCategoryView extends StatelessWidget {
                 children: [
                   CustomTextFormField(
                     controller: controller.nameController,
-                    hintText: "Enter Category Name",
+                    hintText: "Edit Category Name",
                     iconData: Icons.category,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
@@ -43,7 +44,7 @@ class AddCategoryView extends StatelessWidget {
                   ),
                   CustomTextFormField(
                     controller: controller.arabicNameController,
-                    hintText: "Enter Category Name In Arabic",
+                    hintText: "Edit Category Name In Arabic",
                     iconData: Icons.category,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
@@ -61,9 +62,10 @@ class AddCategoryView extends StatelessWidget {
                               width: 60,
                               height: 60,
                             )
-                          : Icon(
-                              Icons.image,
-                              size: 60,
+                          : SvgPicture.network(
+                              "${AppLink.imagesCategories}/${controller.categoriesMD.categoriesImage}",
+                              width: 60,
+                              height: 60,
                             ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -100,9 +102,9 @@ class AddCategoryView extends StatelessWidget {
                     ],
                   ),
                   CustomButton(
-                    text: "Add",
+                    text: "Save Changes",
                     onPressed: () {
-                      controller.AddData();
+                      controller.editData();
                     },
                   ),
                 ],
