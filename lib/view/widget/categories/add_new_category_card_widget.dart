@@ -16,6 +16,10 @@ class AddNewCategoryCustomCard extends StatelessWidget {
         Get.toNamed(AddCategoryView.routeName);
       },
       child: Card(
+        margin: EdgeInsets.all(4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         elevation: 4,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
