@@ -1,12 +1,15 @@
 import 'dart:io';
 
+import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_admin/controller/items_Controllers/items_view_controller.dart';
 import 'package:shop_savvy_admin/core/class/status_request.dart';
 import 'package:shop_savvy_admin/core/functions/handling_data.dart';
 import 'package:shop_savvy_admin/core/functions/upload_file.dart';
+import 'package:shop_savvy_admin/data/data_source/remote/categories_data/view.dart';
 import 'package:shop_savvy_admin/data/data_source/remote/items_data/edit.dart';
+import 'package:shop_savvy_admin/data/model/categories_model.dart';
 import 'package:shop_savvy_admin/data/model/items_model.dart';
 import 'package:shop_savvy_admin/view/screen/items/item_view.dart';
 
@@ -18,13 +21,17 @@ class EditItemController extends GetxController {
   late TextEditingController arabicNameController;
   late TextEditingController arabicDescriptionController;
   late TextEditingController countController;
-  late TextEditingController activeController;
   late TextEditingController priceController;
   late TextEditingController discountController;
-  late TextEditingController itemsCategoryIdController;
+  late TextEditingController dropDownNameController;
+  late TextEditingController dropDownIdController;
+  late TextEditingController itemsCategoryId;
+  late TextEditingController itemsCategoryName;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   File? file;
   late ItemsMd itemsMd;
+  List<SelectedListItem> dropDownListItems = [];
+  late num active;
 
   chooseImage() async {
     file = await uploadImageFromGallery(true);
@@ -43,10 +50,10 @@ class EditItemController extends GetxController {
         descriptionController.text,
         arabicDescriptionController.text,
         countController.text,
-        activeController.text,
+        active.toString(),
         priceController.text,
         discountController.text,
-        itemsCategoryIdController.text,
+        itemsCategoryId.text,
         itemsMd.itemsImage!,
         file,
       );
@@ -65,6 +72,50 @@ class EditItemController extends GetxController {
       update();
     }
   }
+  chooseImageFromGallery() async {
+    file = await uploadImageFromGallery(false);
+    update();
+  }
+
+  takeImageFromCamera() async {
+    file = await uploadImageFromCamera();
+    update();
+  }
+
+  showImageOptions() {
+    showBottomMenu(takeImageFromCamera, chooseImageFromGallery);
+  }
+  changeActiveStatus(val){
+    active = val;
+    update();
+  }
+  getCategories() async {
+    ViewCategoryData viewCategoryData = ViewCategoryData(Get.find());
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await viewCategoryData.postData();
+    print(
+        "=============================== ViewCategoriesController $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        List<CategoriesMD> data = [];
+        List dataList = response['data'];
+        data.addAll(dataList.map((e) => CategoriesMD.fromJson(e)));
+        for (int i = 0; i < data.length; i++) {
+          dropDownListItems.add(
+            SelectedListItem(
+              name: data[i].categoriesName!,
+              value: data[i].categoriesId.toString(),
+            ),
+          );
+        }
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
 
   @override
   void onInit() {
@@ -74,19 +125,23 @@ class EditItemController extends GetxController {
     descriptionController = TextEditingController();
     arabicDescriptionController = TextEditingController();
     countController = TextEditingController();
-    activeController = TextEditingController();
+    active =itemsMd.itemsActive!;
     priceController = TextEditingController();
     discountController = TextEditingController();
-    itemsCategoryIdController = TextEditingController();
-    nameController.text = itemsMd.categoriesName!;
-    arabicNameController.text = itemsMd.categoriesNameAr!;
+    itemsCategoryId = TextEditingController();
+    itemsCategoryName = TextEditingController();
+    dropDownNameController = TextEditingController();
+    dropDownIdController = TextEditingController();
+    nameController.text = itemsMd.itemsName!;
+    arabicNameController.text = itemsMd.itemsNameAr!;
     descriptionController.text = itemsMd.itemsDesc!;
     arabicDescriptionController.text=itemsMd.itemsDescAr!;
     countController.text = itemsMd.itemsCount.toString();
-    activeController.text =itemsMd.itemsActive.toString();
     priceController.text  =itemsMd.itemsPrice.toString();
     discountController.text = itemsMd.itemsDiscount.toString();
-    itemsCategoryIdController.text =itemsMd.itemsCategories.toString();
+    itemsCategoryId.text =itemsMd.categoriesId.toString();
+    itemsCategoryName.text =itemsMd.categoriesName.toString();
+    getCategories();
     super.onInit();
   }
 }
