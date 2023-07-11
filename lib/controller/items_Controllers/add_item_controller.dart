@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:drop_down_list/drop_down_list.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +20,6 @@ class AddItemController extends GetxController {
   late TextEditingController arabicNameController;
   late TextEditingController arabicDescriptionController;
   late TextEditingController countController;
-  late TextEditingController activeController;
   late TextEditingController priceController;
   late TextEditingController discountController;
   late TextEditingController dropDownNameController;
@@ -46,35 +44,6 @@ class AddItemController extends GetxController {
     showBottomMenu(takeImageFromCamera, chooseImageFromGallery);
   }
 
-  showDropDownList(BuildContext context) {
-    DropDownState(
-      DropDown(
-        bottomSheetTitle: const Text(
-          "title",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0,
-          ),
-        ),
-        submitButtonChild: const Text(
-          'Done',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        data: [
-          SelectedListItem(name: "A"),
-          SelectedListItem(name: "B"),
-        ],
-        selectedItems: (List<dynamic> selectedList) {
-          SelectedListItem selectedListItem = selectedList[0];
-          dropDownNameController.text = selectedListItem.name;
-        },
-      ),
-    ).showModal(context);
-  }
-
   AddData() async {
     if (formKey.currentState!.validate()) {
       if (file == null) {
@@ -89,10 +58,8 @@ class AddItemController extends GetxController {
         descriptionController.text,
         arabicDescriptionController.text,
         countController.text,
-        activeController.text,
         priceController.text,
         discountController.text,
-        DateTime.now().toString(),
         itemsCategoryId.text,
         file!,
       );
@@ -146,7 +113,6 @@ class AddItemController extends GetxController {
     descriptionController = TextEditingController();
     arabicDescriptionController = TextEditingController();
     countController = TextEditingController();
-    activeController = TextEditingController();
     priceController = TextEditingController();
     discountController = TextEditingController();
     itemsCategoryId = TextEditingController();

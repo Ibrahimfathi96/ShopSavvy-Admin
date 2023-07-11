@@ -27,121 +27,148 @@ class AddItems extends StatelessWidget {
             padding: EdgeInsets.all(12),
             child: Form(
               key: controller.formKey,
-              child: ListView(
-                physics: BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   CustomDropDownSearch(
-                    dataList:controller.dropDownListItems,
+                    dataList: controller.dropDownListItems,
                     title: "Choose From Categories",
+                    label: "Categories",
                     dropDownSelectedName: controller.itemsCategoryName,
                     dropDownSelectedId: controller.itemsCategoryId,
                   ),
-                  CustomTextFormField(
-                    controller: controller.nameController,
-                    hintText: "Item Name",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    labelText: "Name",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  CustomTextFormField(
-                    controller: controller.arabicNameController,
-                    hintText: "Item Arabic Name",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    labelText: "Arabic Name",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  CustomTextFormField(
-                    controller: controller.descriptionController,
-                    hintText: "Item Description",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    labelText: "Description",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  CustomTextFormField(
-                    controller: controller.arabicDescriptionController,
-                    hintText: "Item Arabic Description",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    labelText: "Arabic Description",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  CustomTextFormField(
-                    controller: controller.countController,
-                    hintText: "Item Count",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.number,
-                    labelText: "Count",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  CustomTextFormField(
-                    controller: controller.priceController,
-                    hintText: "Item Price",
-                    iconData: Icons.shopping_cart,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.number,
-                    labelText: "Price",
-                    validator: (val) {
-                      return validInput(val!, 5, 50, "");
-                    },
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.image,
-                        size: 60,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Choose Item Image",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryDark,
-                              fontSize: 16,
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              controller.showImageOptions();
-                            },
-                            child: Row(
+                  Expanded(
+                    child: ListView(
+                      physics: BouncingScrollPhysics(),
+                      children: [
+                        CustomTextFormField(
+                          controller: controller.nameController,
+                          hintText: "Item Name",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          labelText: "Name",
+                          validator: (val) {
+                            return validInput(val!, 5, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.arabicNameController,
+                          hintText: "Item Arabic Name",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          labelText: "Arabic Name",
+                          validator: (val) {
+                            return validInput(val!, 5, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.descriptionController,
+                          hintText: "Item Description",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          labelText: "Description",
+                          validator: (val) {
+                            return validInput(val!, 5, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.arabicDescriptionController,
+                          hintText: "Item Arabic Description",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          labelText: "Arabic Description",
+                          validator: (val) {
+                            return validInput(val!, 5, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.countController,
+                          hintText: "Item Count",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number,
+                          labelText: "Count",
+                          validator: (val) {
+                            return validInput(val!, 1, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.priceController,
+                          hintText: "Item Price",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number,
+                          labelText: "Price",
+                          validator: (val) {
+                            return validInput(val!, 1, 50, "");
+                          },
+                        ),
+                        CustomTextFormField(
+                          controller: controller.discountController,
+                          hintText: "Item Discount",
+                          iconData: Icons.shopping_cart,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number,
+                          labelText: "Discount",
+                          validator: (val) {
+                            return validInput(val!, 1, 50, "");
+                          },
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            controller.file == null
+                                ? Icon(
+                                    Icons.image,
+                                    size: 60,
+                                  )
+                                : Image.file(
+                                    controller.file!,
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Upload",
+                                  "Choose Item Image",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
-                                    decorationThickness: 2,
+                                    color: AppColors.primaryDark,
                                     fontSize: 16,
                                   ),
                                 ),
-                                Icon(Icons.file_upload_outlined)
+                                TextButton(
+                                  onPressed: () {
+                                    controller.showImageOptions();
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        controller.file == null
+                                            ? "Upload"
+                                            : "Edit",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          decoration: TextDecoration.underline,
+                                          decorationThickness: 2,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Icon(Icons.file_upload_outlined)
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   CustomButton(
                     text: "Add",

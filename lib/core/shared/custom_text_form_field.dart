@@ -27,7 +27,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 16, bottom: 16),
+      margin: const EdgeInsets.only(top: 16, bottom: 10),
       child: TextFormField(
         cursorColor: AppColors.primaryColor,
         validator: validator,

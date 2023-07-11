@@ -5,6 +5,7 @@ import 'package:shop_savvy_admin/core/constants/color.dart';
 
 class CustomDropDownSearch extends StatefulWidget {
   final String title;
+  final String label;
   final List<SelectedListItem> dataList;
   final TextEditingController dropDownSelectedName;
 
@@ -15,7 +16,8 @@ class CustomDropDownSearch extends StatefulWidget {
       required this.title,
       required this.dataList,
       required this.dropDownSelectedName,
-      required this.dropDownSelectedId});
+      required this.dropDownSelectedId,
+      required this.label});
 
   @override
   State<CustomDropDownSearch> createState() => _CustomDropDownSearchState();
@@ -61,10 +63,20 @@ class _CustomDropDownSearchState extends State<CustomDropDownSearch> {
         showDropDownSearch();
       },
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.black12,
-        contentPadding:
-            const EdgeInsets.only(left: 20, bottom: 0, top: 0, right: 15),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: const EdgeInsets.symmetric(vertical: 6, horizontal: 30),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.deepOrangeAccent),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.deepOrangeAccent),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.deepOrangeAccent),
+          borderRadius: BorderRadius.circular(30),
+        ),
         hintText: widget.dropDownSelectedName.text == ""
             ? widget.title
             : widget.dropDownSelectedName.text,
@@ -72,14 +84,23 @@ class _CustomDropDownSearchState extends State<CustomDropDownSearch> {
           fontWeight: FontWeight.bold,
           color: AppColors.primaryDark,
         ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 0,
-            style: BorderStyle.none,
+        label: Container(
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
           ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(16.0),
+          child: Text(
+            widget.label,
           ),
+        ),
+        labelStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.deepOrangeAccent),
+        suffixIcon: IconButton(
+          padding: EdgeInsets.only(right: 20),
+          onPressed: () {},
+          icon: Icon(Icons.arrow_drop_down_circle),
+          color: Colors.deepOrangeAccent,
         ),
       ),
     );

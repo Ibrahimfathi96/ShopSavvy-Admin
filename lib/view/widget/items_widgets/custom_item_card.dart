@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
+import 'package:marquee/marquee.dart';
 import 'package:shop_savvy_admin/controller/items_Controllers/items_view_controller.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
 import 'package:shop_savvy_admin/data/model/items_model.dart';
@@ -70,17 +71,34 @@ class CustomItemCard extends GetView<ViewItemsController> {
                 const SizedBox(
                   width: 10,
                 ),
-                SizedBox(
-                  width: 150,
-                  child: Text(
-                    itemsMd.itemsName!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.primaryDark,
-                      fontWeight: FontWeight.bold,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      width: 150,
+                      child: Marquee(
+                        text: itemsMd.itemsName!,
+                        velocity: 30,
+                        blankSpace: 50,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.primaryDark,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
+                    Text(
+                      itemsMd.categoriesName!,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.primaryDark.withOpacity(0.5),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 Spacer(),
                 InkWell(
