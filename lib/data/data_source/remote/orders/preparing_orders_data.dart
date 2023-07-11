@@ -1,15 +1,16 @@
 import 'package:shop_savvy_admin/core/class/crud.dart';
 import 'package:shop_savvy_admin/link_api.dart';
 
-class DoneOrdersData {
+class PreparingOrdersData {
   Crud crud;
 
-  DoneOrdersData(this.crud);
+  PreparingOrdersData(this.crud);
 
-  getData(String orderId, String userId,) async {
-    var response = await crud.postData(AppLink.doneOrders, {
+  getData(String orderId, String userId,String orderType,) async {
+    var response = await crud.postData(AppLink.preparingOrders, {
       "userId": userId,
       "orderId": orderId,
+      "orderType": orderType,
     });
     return response.fold((l) => l, (r) => r);
   }

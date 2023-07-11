@@ -32,6 +32,7 @@ List<GetPage<dynamic>> routes = [
       name: ResetPasswordSuccessfully.routeName,
       page: () => const ResetPasswordSuccessfully()),
   GetPage(name: HomeScreen.routeName, page: () => const HomeScreen()),
+  //Orders
   GetPage(name: MyOrdersView.routeName, page: () => const MyOrdersView()),
   GetPage(name: OrdersDetails.routeName, page: () => const OrdersDetails()),
   //Categories

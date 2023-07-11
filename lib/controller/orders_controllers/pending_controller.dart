@@ -28,7 +28,6 @@ class PendingOrdersController extends GetxController {
     var response = await approvedOrdersData.getData(
       orderId,
       userId,
-      services.prefs.getString("id")!,
     );
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {

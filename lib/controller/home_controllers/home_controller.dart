@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shop_savvy_admin/generated/assets.dart';
 import 'package:shop_savvy_admin/view/screen/categories/category_view.dart';
 import 'package:shop_savvy_admin/view/screen/items/item_view.dart';
+import 'package:shop_savvy_admin/view/screen/orders_view/myorders_view.dart';
 import 'package:shop_savvy_admin/view/widget/home_widgets/gridview_item.dart';
 
 class HomePageController extends GetxController {
@@ -32,7 +33,9 @@ class HomePageController extends GetxController {
       imageUrl: Assets.imagesDelivery,
     ),
     GridViewItem(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(MyOrdersView.routeName);
+      },
       titleText: "Orders",
       imageUrl: Assets.imagesOrders,
     ),

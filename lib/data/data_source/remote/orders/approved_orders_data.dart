@@ -6,11 +6,10 @@ class ApprovedOrdersData {
 
   ApprovedOrdersData(this.crud);
 
-  getData(String orderId, String userId, String deliveryId,) async {
+  getData(String orderId, String userId) async {
     var response = await crud.postData(AppLink.approvedOrders, {
       "orderId": orderId,
       "userId":userId,
-      "deliveryId":deliveryId,
     });
     return response.fold((l) => l, (r) => r);
   }

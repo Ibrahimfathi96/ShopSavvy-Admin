@@ -25,7 +25,7 @@ class ArchiveOrdersController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response =
-        await archiveOrdersData.getData(services.prefs.getString("id")!);
+        await archiveOrdersData.getData();
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == 'success') {

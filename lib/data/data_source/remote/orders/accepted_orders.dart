@@ -6,10 +6,8 @@ class AcceptedOrdersData {
 
   AcceptedOrdersData(this.crud);
 
-  getData( String deliveryId,) async {
-    var response = await crud.postData(AppLink.acceptedOrders, {
-      "deliveryId":deliveryId,
-    });
+  getData() async {
+    var response = await crud.postData(AppLink.acceptedOrders, {});
     return response.fold((l) => l, (r) => r);
   }
 }

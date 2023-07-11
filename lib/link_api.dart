@@ -23,20 +23,21 @@ class AppLink {
 
   //Orders & Checkout PHP
   static const String orders = "$server/orders";
-  static const String approvedOrders = "$orders/approve.php";
-  static const String acceptedOrders = "$orders/accepted.php";
-  static const String archivedOrders = "$orders/archive.php";
   static const String pendingOrders = "$orders/pending.php";
-  static const String detailsOrders = "$orders/details.php";
-  static const String doneOrders = "$orders/done.php";
+  static const String acceptedOrders = "$orders/accepted.php";
+  static const String approvedOrders = "$orders/approve.php";
+  static const String archivedOrders = "$orders/archive.php";
+  static const String preparingOrders = "$orders/prepare.php";
+  static const String ordersDetails = "$orders/details.php";
 
-  //Categories
+  //Categories PHP
   static const String categories = "$server/categories";
   static const String addCategories = "$categories/add.php";
   static const String editCategories = "$categories/edit.php";
   static const String viewCategories = "$categories/view.php";
   static const String deleteCategories = "$categories/delete.php";
-  //Items
+
+  //Items PHP
   static const String items = "$server/items";
   static const String addItems = "$items/add.php";
   static const String editItems = "$items/edit.php";

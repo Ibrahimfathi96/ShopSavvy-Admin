@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:shop_savvy_admin/controller/orders_controllers/accepted_controller.dart';
-import 'package:shop_savvy_admin/core/constants/color.dart';
+import 'package:shop_savvy_admin/controller/orders_controllers/archive_orders_controller.dart';
 import 'package:shop_savvy_admin/data/model/orders_model.dart';
 import 'package:shop_savvy_admin/view/screen/orders_view/orders_details.dart';
 import 'package:shop_savvy_admin/view/widget/orders_widgets/orders_id_and_date_time.dart';
 import 'package:shop_savvy_admin/view/widget/orders_widgets/orders_texts.dart';
 import 'package:shop_savvy_admin/view/widget/orders_widgets/orders_total_price.dart';
 
-class AcceptedOrdersItemCard extends GetView<AcceptedOrdersController> {
+class ArchivedOrdersItemCard extends GetView<ArchiveOrdersController> {
   final OrdersMd ordersMd;
 
-  const AcceptedOrdersItemCard({
+  const ArchivedOrdersItemCard({
     super.key,
     required this.ordersMd,
   });
@@ -74,30 +73,6 @@ class AcceptedOrdersItemCard extends GetView<AcceptedOrdersController> {
               color: controller.orderStatusColor(ordersMd.ordersStatus!),
               text2: "${ordersMd.ordersTotalPrice!.round()} EGP",
             ),
-            if (ordersMd.ordersStatus == 3)
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    backgroundColor: AppColors.primaryDark,
-                    minimumSize: Size(MediaQuery.sizeOf(context).width / 6, 40),
-                  ),
-                  onPressed: () {
-                    controller.deliveryDone(ordersMd.ordersId.toString(),
-                        ordersMd.ordersUserId.toString());
-                  },
-                  child: Text(
-                    "Delivered",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
           ],
         ),
       ),

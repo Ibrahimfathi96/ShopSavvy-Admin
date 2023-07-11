@@ -6,10 +6,8 @@ class ArchivedOrdersData {
 
   ArchivedOrdersData(this.crud);
 
-  getData(String deliveryId,) async {
-    var response = await crud.postData(AppLink.archivedOrders, {
-      "deliveryId":deliveryId,
-    });
+  getData() async {
+    var response = await crud.postData(AppLink.archivedOrders, {});
     return response.fold((l) => l, (r) => r);
   }
 }
