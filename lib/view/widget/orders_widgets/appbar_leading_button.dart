@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shop_savvy_admin/core/constants/color.dart';
-import 'package:shop_savvy_admin/view/screen/home/home_screen.dart';
 
 class AppBarItem extends StatelessWidget {
   const AppBarItem({

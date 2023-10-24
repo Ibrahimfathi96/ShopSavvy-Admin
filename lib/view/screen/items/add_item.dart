@@ -49,7 +49,7 @@ class AddItems extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: "Name",
                           validator: (val) {
-                            return validInput(val!, 5, 50, "");
+                            return validInput(val!, 5, 100, "");
                           },
                         ),
                         CustomTextFormField(
@@ -60,7 +60,7 @@ class AddItems extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: "Arabic Name",
                           validator: (val) {
-                            return validInput(val!, 5, 50, "");
+                            return validInput(val!, 5, 100, "");
                           },
                         ),
                         CustomTextFormField(
@@ -71,7 +71,7 @@ class AddItems extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: "Description",
                           validator: (val) {
-                            return validInput(val!, 5, 50, "");
+                            return validInput(val!, 5, 150, "");
                           },
                         ),
                         CustomTextFormField(
@@ -82,7 +82,7 @@ class AddItems extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: "Arabic Description",
                           validator: (val) {
-                            return validInput(val!, 5, 50, "");
+                            return validInput(val!, 5, 150, "");
                           },
                         ),
                         CustomTextFormField(
