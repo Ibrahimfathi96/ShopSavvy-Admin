@@ -55,7 +55,6 @@ but now using only php api. but all firebase functions are available and ready t
   <div style="margin: 10px;">
     <img src="./Photos/17.jpg" alt="Image 1" width="200">
     <img src="./Photos/18.jpg" alt="Image 2" width="200">
-    <img src="./Photos/19.jpg" alt="Image 3" width="200">
   </div>
 </div>
 
